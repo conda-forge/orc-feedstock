@@ -13,7 +13,7 @@ source:
     - 0001-Deactivate-aggressive-failures-on-warnings.patch
 
 build:
-  number: 0
+  number: 1
   skip: True    # [win]
 
 requirements:
@@ -25,10 +25,10 @@ requirements:
   host:
     - zlib
     - snappy
-    - libprotobuf <3.7
+    - libprotobuf
     - lz4-c
   run:
-    - libprotobuf <3.7
+    - libprotobuf
 
 test:
   commands:

@@ -13,7 +13,7 @@ source:
     - 0001-Deactivate-aggressive-failures-on-warnings.patch
 
 build:
-  number: 2
+  number: 3
   skip: True    # [win]
 
 requirements:

@@ -1,4 +1,4 @@
-{% set version = "1.6.1" %}
+{% set version = "1.6.2" %}
 
 package:
   name: orc
@@ -6,14 +6,14 @@ package:
 
 source:
   url: https://archive.apache.org/dist/orc/orc-{{ version }}/orc-{{ version }}.tar.gz
-  sha256: 56a7622629f0101f12bf9470065c8283390a1967e4969975756b8d2dc03383c8
+  sha256: 5c394603faba3c50a295b44933f2c1b3532da48391d56764a1b2a2d67b610eed
   patches:
     # ORC builds by default with -Werror but some dependencies omit warnings.
     # This deactivates -Werror
     - 0001-Deactivate-aggressive-failures-on-warnings.patch
 
 build:
-  number: 1
+  number: 0
   skip: True    # [win]
 
 requirements:

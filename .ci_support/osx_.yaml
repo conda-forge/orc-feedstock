@@ -15,7 +15,7 @@ cxx_compiler_version:
 libprotobuf:
 - '3.11'
 lz4_c:
-- 1.8.3
+- 1.9.2
 macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:
@@ -23,11 +23,9 @@ macos_min_version:
 pin_run_as_build:
   lz4-c:
     max_pin: x.x.x
-  snappy:
-    max_pin: x.x.x
   zlib:
     max_pin: x.x
 snappy:
-- 1.1.7
+- '1'
 zlib:
 - '1.2'

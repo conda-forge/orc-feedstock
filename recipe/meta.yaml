@@ -1,4 +1,4 @@
-{% set version = "1.6.2" %}
+{% set version = "1.6.3" %}
 
 package:
   name: orc
@@ -6,15 +6,15 @@ package:
 
 source:
   url: https://archive.apache.org/dist/orc/orc-{{ version }}/orc-{{ version }}.tar.gz
-  sha256: 5c394603faba3c50a295b44933f2c1b3532da48391d56764a1b2a2d67b610eed
+  sha256: 38b9da9ca771d26877cae5b8da55aa1d1bf1ed515723f9cfdcba49d619396bc4
   patches:
     # ORC builds by default with -Werror but some dependencies omit warnings.
     # This deactivates -Werror
     - 0001-Deactivate-aggressive-failures-on-warnings.patch
 
 build:
-  number: 2
-  skip: True    # [win]
+  number: 0
+  skip: true  # [win]
 
 requirements:
   build:
@@ -39,7 +39,7 @@ about:
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
-  summary: 'C++ libraries for Apache ORC'
+  summary: C++ libraries for Apache ORC
 
 extra:
   recipe-maintainers:

@@ -13,7 +13,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '9'
 libprotobuf:
-- '3.11'
+- '3.12'
 lz4_c:
 - 1.9.2
 macos_machine:

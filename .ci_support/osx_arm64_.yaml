@@ -1,21 +1,23 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '11.0'
 c_compiler:
-- gcc
+- clang
 c_compiler_version:
-- '8'
+- '11'
 channel_sources:
-- conda-forge,defaults
+- conda-forge/label/llvm_rc,conda-forge,https://conda-web.anaconda.org/conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- gxx
+- clangxx
 cxx_compiler_version:
-- '8'
-docker_image:
-- condaforge/linux-anvil-ppc64le
+- '11'
 libprotobuf:
 - '3.12'
 lz4_c:
 - 1.9.2
+macos_machine:
+- arm64-apple-darwin20.0.0
 pin_run_as_build:
   lz4-c:
     max_pin: x.x.x
@@ -24,6 +26,6 @@ pin_run_as_build:
 snappy:
 - '1'
 target_platform:
-- linux-ppc64le
+- osx-arm64
 zlib:
 - '1.2'

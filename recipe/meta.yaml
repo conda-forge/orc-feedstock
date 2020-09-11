@@ -26,9 +26,8 @@ requirements:
     - zlib
     - snappy
     - libprotobuf
+    - libprotobuf-static
     - lz4-c
-  run:
-    - libprotobuf
 
 test:
   commands:

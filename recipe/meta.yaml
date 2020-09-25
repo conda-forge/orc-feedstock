@@ -1,4 +1,4 @@
-{% set version = "1.6.3" %}
+{% set version = "1.6.4" %}
 
 package:
   name: orc
@@ -6,15 +6,19 @@ package:
 
 source:
   url: https://archive.apache.org/dist/orc/orc-{{ version }}/orc-{{ version }}.tar.gz
-  sha256: 38b9da9ca771d26877cae5b8da55aa1d1bf1ed515723f9cfdcba49d619396bc4
+  sha256: ceea9849277354cffb37853b7f47ea96898c3e716e0803a597ca657cdb59e43c
   patches:
     # ORC builds by default with -Werror but some dependencies omit warnings.
     # This deactivates -Werror
     - 0001-Deactivate-aggressive-failures-on-warnings.patch
+    - 0002-Partially-rework-cmake-modules-to-accommodate-librar.patch
+    - 0003-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
+  # run_exports:
+  # https://github.com/lvc/upstream-tracker/issues/88
 
 requirements:
   build:
@@ -27,12 +31,14 @@ requirements:
     - snappy
     - libprotobuf
     - lz4-c
+    - zstd
   run:
     - libprotobuf
 
 test:
   commands:
-    - test -f $PREFIX/lib/liborc.a  # [unix]
+    - test -f $PREFIX/lib/liborc${SHLIB_EXT}  # [unix]
+    - test -f $PREFIX/include/orc/Common.hh   # [unix]
 
 about:
   home: http://github.com/apache/orc
@@ -45,3 +51,4 @@ extra:
   recipe-maintainers:
     - wesm
     - xhochy
+    - nehaljwani

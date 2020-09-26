@@ -15,10 +15,10 @@ source:
     - 0003-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win]
-  # run_exports:
-  # https://github.com/lvc/upstream-tracker/issues/88
+  run_exports:
+    - {{ pin_subpackage("orc", max_pin="x.x.x") }}
 
 requirements:
   build:
@@ -34,8 +34,6 @@ requirements:
     - libprotobuf
     - lz4-c
     - zstd
-  run:
-    - libprotobuf
 
 test:
   commands:

@@ -24,7 +24,7 @@ fi
 
 CPPFLAGS="${CPPFLAGS} -Wl,-rpath,$PREFIX/lib"
 
-cmake \
+cmake ${CMAKE_ARGS} \
     -DCMAKE_PREFIX_PATH=$PREFIX \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=ON \

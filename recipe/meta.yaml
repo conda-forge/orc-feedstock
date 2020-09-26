@@ -25,6 +25,8 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - ninja       # [unix]
+    # `protoc` is also used for building
+    - libprotobuf
     - cmake
   host:
     - zlib

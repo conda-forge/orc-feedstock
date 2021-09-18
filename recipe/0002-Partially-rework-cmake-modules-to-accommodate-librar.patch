@@ -1,7 +1,7 @@
-From 8c6406b01cf0c9e144466651c9fe7d833a2c5ca4 Mon Sep 17 00:00:00 2001
+From c215bd7f01089caea8b6f271034a509cbad85bf7 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sat, 29 Aug 2020 13:37:21 -0400
-Subject: [PATCH 2/2] Partially rework cmake modules to accommodate library
+Subject: [PATCH 2/3] Partially rework cmake modules to accommodate library
  types
 
 This patch allows selectively linking each third party library
@@ -21,7 +21,7 @@ statically with a fallback to dynamic, if not available
  11 files changed, 200 insertions(+), 115 deletions(-)
 
 diff --git a/c++/src/CMakeLists.txt b/c++/src/CMakeLists.txt
-index 7ff543dd..772f4c66 100644
+index 3d4a1629..38482e93 100644
 --- a/c++/src/CMakeLists.txt
 +++ b/c++/src/CMakeLists.txt
 @@ -155,7 +155,7 @@ CHECK_CXX_SOURCE_RUNS("
@@ -46,7 +46,7 @@ index 7ff543dd..772f4c66 100644
    )
  
  add_custom_command(OUTPUT orc_proto.pb.h orc_proto.pb.cc
-@@ -236,11 +231,11 @@ endif(BUILD_LIBHDFSPP)
+@@ -230,11 +225,11 @@ endif(BUILD_LIBHDFSPP)
  add_library (orc STATIC ${SOURCE_FILES})
  
  target_link_libraries (orc
@@ -64,7 +64,7 @@ index 7ff543dd..772f4c66 100644
    )
  
 diff --git a/c++/test/CMakeLists.txt b/c++/test/CMakeLists.txt
-index ae4b807b..da5ef577 100644
+index ea390238..2d26f97b 100644
 --- a/c++/test/CMakeLists.txt
 +++ b/c++/test/CMakeLists.txt
 @@ -14,10 +14,6 @@ include_directories(
@@ -78,7 +78,7 @@ index ae4b807b..da5ef577 100644
  )
  
  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CXX11_FLAGS} ${WARN_FLAGS}")
-@@ -54,11 +50,11 @@ add_executable (orc-test
+@@ -51,11 +47,11 @@ add_executable (orc-test
  
  target_link_libraries (orc-test
    orc
@@ -95,7 +95,7 @@ index ae4b807b..da5ef577 100644
  )
  
  add_executable (create-test-files
-@@ -67,7 +63,7 @@ add_executable (create-test-files
+@@ -64,7 +60,7 @@ add_executable (create-test-files
  
  target_link_libraries (create-test-files
    orc
@@ -482,7 +482,7 @@ index e0889769..02c5889a 100644
 +        ZSTD_LIBRARY
  )
 diff --git a/cmake_modules/ThirdpartyToolchain.cmake b/cmake_modules/ThirdpartyToolchain.cmake
-index 3a353257..f3e1089c 100644
+index fc4409cb..2b288168 100644
 --- a/cmake_modules/ThirdpartyToolchain.cmake
 +++ b/cmake_modules/ThirdpartyToolchain.cmake
 @@ -17,6 +17,13 @@ set(GTEST_VERSION "1.8.0")
@@ -499,7 +499,7 @@ index 3a353257..f3e1089c 100644
  # zstd requires us to add the threads
  FIND_PACKAGE(Threads REQUIRED)
  
-@@ -75,15 +82,21 @@ else ()
+@@ -79,15 +86,21 @@ else ()
      ${THIRDPARTY_LOG_OPTIONS}
      BUILD_BYPRODUCTS "${SNAPPY_STATIC_LIB}")
  
@@ -525,7 +525,7 @@ index 3a353257..f3e1089c 100644
    if (INSTALL_VENDORED_LIBS)
      install(FILES "${SNAPPY_STATIC_LIB}"
              DESTINATION "lib")
-@@ -117,15 +130,21 @@ else ()
+@@ -125,15 +138,21 @@ else ()
      ${THIRDPARTY_LOG_OPTIONS}
      BUILD_BYPRODUCTS "${ZLIB_STATIC_LIB}")
  
@@ -551,7 +551,7 @@ index 3a353257..f3e1089c 100644
    if (INSTALL_VENDORED_LIBS)
      install(FILES "${ZLIB_STATIC_LIB}"
              DESTINATION "lib")
-@@ -166,15 +185,21 @@ else ()
+@@ -178,15 +197,21 @@ else ()
            ${THIRDPARTY_LOG_OPTIONS}
            BUILD_BYPRODUCTS ${ZSTD_STATIC_LIB})
  
@@ -577,7 +577,7 @@ index 3a353257..f3e1089c 100644
    if (INSTALL_VENDORED_LIBS)
      install(FILES "${ZSTD_STATIC_LIB}"
              DESTINATION "lib")
-@@ -208,15 +233,21 @@ else ()
+@@ -224,15 +249,21 @@ else ()
      ${THIRDPARTY_LOG_OPTIONS}
      BUILD_BYPRODUCTS ${LZ4_STATIC_LIB})
  
@@ -603,7 +603,7 @@ index 3a353257..f3e1089c 100644
    if (INSTALL_VENDORED_LIBS)
      install(FILES "${LZ4_STATIC_LIB}"
              DESTINATION "lib")
-@@ -267,21 +298,33 @@ if (BUILD_CPP_TESTS)
+@@ -287,21 +318,33 @@ if (BUILD_CPP_TESTS)
        CMAKE_ARGS ${GTEST_CMAKE_ARGS}
        BUILD_BYPRODUCTS "${GMOCK_STATIC_LIB}")
  
@@ -644,7 +644,7 @@ index 3a353257..f3e1089c 100644
    endif ()
  endif ()
  
-@@ -322,20 +365,33 @@ else ()
+@@ -347,20 +390,33 @@ else ()
      ${THIRDPARTY_LOG_OPTIONS}
      BUILD_BYPRODUCTS "${PROTOBUF_STATIC_LIB}" "${PROTOC_STATIC_LIB}")
  
@@ -685,8 +685,8 @@ index 3a353257..f3e1089c 100644
    if (INSTALL_VENDORED_LIBS)
      install(FILES "${PROTOBUF_STATIC_LIB}" "${PROTOC_STATIC_LIB}"
              DESTINATION "lib")
-@@ -371,7 +427,7 @@ if(BUILD_LIBHDFSPP)
-                                 -DBUILD_SHARED_HDFSPP=FALSE)
+@@ -400,7 +456,7 @@ if(BUILD_LIBHDFSPP)
+       endif ()
  
        ExternalProject_Add (libhdfspp_ep
 -        DEPENDS protobuf
@@ -745,5 +745,5 @@ index 505fc8d2..29f54cb1 100644
  
  if (TEST_VALGRIND_MEMCHECK)
 -- 
-2.26.2
+2.31.1
 

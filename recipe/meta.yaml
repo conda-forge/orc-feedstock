@@ -1,4 +1,4 @@
-{% set version = "1.6.11" %}
+{% set version = "1.7.0" %}
 
 package:
   name: orc
@@ -6,13 +6,12 @@ package:
 
 source:
   url: https://archive.apache.org/dist/orc/orc-{{ version }}/orc-{{ version }}.tar.gz
-  sha256: 67c17c012bd588fc5e8195b23fe92c2cb59aa6e20d57ed3dceb3a5f0b0b4c459
+  sha256: cab8cea768b391b173ad5ba839baf20ba9abc42570e3d661783c9c52e0430ab3
   patches:
     # ORC builds by default with -Werror but some dependencies omit warnings.
     # This deactivates -Werror
     - 0001-Deactivate-aggressive-failures-on-warnings.patch
-    - 0002-Partially-rework-cmake-modules-to-accommodate-librar.patch
-    - 0003-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
+    - 0002-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
 
 build:
   number: 0

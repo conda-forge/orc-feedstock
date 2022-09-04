@@ -1,4 +1,4 @@
-{% set version = "1.7.6" %}
+{% set version = "1.8.0" %}
 
 package:
   name: orc
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://archive.apache.org/dist/orc/orc-{{ version }}/orc-{{ version }}.tar.gz
-  sha256: a75e0cccaaf5e03f1699bb804f640246bec4d134cb57957125707b0b2822160d
+  sha256: 859d78bfded98405c32ccb2847b565a57bcc53f473a74087c1f750aeb5932e62
   patches:
     # ORC builds by default with -Werror but some dependencies omit warnings.
     # This deactivates -Werror
@@ -14,7 +14,7 @@ source:
     - 0002-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage("orc", max_pin="x.x.x") }}

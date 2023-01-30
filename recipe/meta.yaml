@@ -12,10 +12,10 @@ source:
     # This deactivates -Werror
     - 0001-Deactivate-aggressive-failures-on-warnings.patch
     - 0002-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
+    - 0003-CMake-Add-more-hints-for-libraries-on-Windows.patch
 
 build:
-  number: 0
-  skip: true  # [win]
+  number: 1
   run_exports:
     - {{ pin_subpackage("orc", max_pin="x.x.x") }}
 

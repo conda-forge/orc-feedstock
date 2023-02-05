@@ -56,6 +56,7 @@ about:
   license_family: Apache
   license_file: LICENSE
   summary: C++ libraries for Apache ORC
+  dev_url: https://github.com/apache/orc
 
 extra:
   recipe-maintainers:

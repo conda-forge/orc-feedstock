@@ -1,0 +1,26 @@
+From c32bb0b4d917c0351b80af5c18135b0272f0a347 Mon Sep 17 00:00:00 2001
+From: Nehal J Wani <nehaljw.kkd1@gmail.com>
+Date: Fri, 25 Sep 2020 14:49:59 -0400
+Subject: [PATCH 2/4] Don't force orc to be a static library, let end user
+ control it
+
+---
+ c++/src/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/c++/src/CMakeLists.txt b/c++/src/CMakeLists.txt
+index d4cd03504..442806ee8 100644
+--- a/c++/src/CMakeLists.txt
++++ b/c++/src/CMakeLists.txt
+@@ -236,7 +236,7 @@ if(BUILD_LIBHDFSPP)
+   add_definitions(-DBUILD_LIBHDFSPP)
+ endif(BUILD_LIBHDFSPP)
+ 
+-add_library (orc STATIC ${SOURCE_FILES})
++add_library (orc ${SOURCE_FILES})
+ 
+ target_link_libraries (orc
+   orc::protobuf
+-- 
+2.38.1.windows.1
+

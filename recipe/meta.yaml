@@ -10,12 +10,13 @@ source:
   patches:
     # ORC builds by default with -Werror but some dependencies omit warnings.
     # This deactivates -Werror
-    - 0001-Deactivate-aggressive-failures-on-warnings.patch
-    - 0002-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
-    - 0003-CMake-Add-more-hints-for-libraries-on-Windows.patch
+    - patches/0001-Deactivate-aggressive-failures-on-warnings.patch
+    - patches/0002-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
+    - patches/0003-CMake-Add-more-hints-for-libraries-on-Windows.patch
+    - patches/0004-don-t-force-lib-destination.patch
 
 build:
-  number: 1
+  number: 2
   run_exports:
     - {{ pin_subpackage("orc", max_pin="x.x.x") }}
 
@@ -36,8 +37,19 @@ requirements:
 
 test:
   commands:
-    - test -f $PREFIX/lib/liborc${SHLIB_EXT}  # [unix]
-    - test -f $PREFIX/include/orc/Common.hh   # [unix]
+    # shared libraries
+    - test -f $PREFIX/lib/liborc.so              # [linux]
+    - test -f $PREFIX/lib/liborc.dylib           # [osx]
+    - if not exist %LIBRARY_BIN%\orc.dll exit 1  # [win]
+    # import library for the DLL
+    - if not exist %LIBRARY_LIB%\orc.lib exit 1  # [win]
+
+    # absence of static libraries
+    - test ! -f $PREFIX/lib/liborc.a             # [not win]
+
+    # headers
+    - test -f $PREFIX/include/orc/Common.hh            # [unix]
+    - if not exist %LIBRARY_INC%\orc\Common.hh exit 1  # [win]
 
 about:
   home: http://github.com/apache/orc
@@ -45,6 +57,7 @@ about:
   license_family: Apache
   license_file: LICENSE
   summary: C++ libraries for Apache ORC
+  dev_url: https://github.com/apache/orc
 
 extra:
   recipe-maintainers:

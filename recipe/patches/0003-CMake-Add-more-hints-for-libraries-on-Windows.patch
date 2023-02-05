@@ -1,0 +1,48 @@
+From 973fdd63c19564d95264eede1d769cfab1c8c7d7 Mon Sep 17 00:00:00 2001
+From: Nehal J Wani <nehaljw.kkd1@gmail.com>
+Date: Sat, 4 Feb 2023 20:50:40 +0000
+Subject: [PATCH 3/4] CMake: Add more hints for libraries on Windows
+
+---
+ cmake_modules/FindLZ4.cmake      | 2 +-
+ cmake_modules/FindProtobuf.cmake | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/cmake_modules/FindLZ4.cmake b/cmake_modules/FindLZ4.cmake
+index f57984940..c466745e6 100644
+--- a/cmake_modules/FindLZ4.cmake
++++ b/cmake_modules/FindLZ4.cmake
+@@ -28,7 +28,7 @@ find_path (LZ4_INCLUDE_DIR lz4.h HINTS
+   NO_DEFAULT_PATH
+   PATH_SUFFIXES "include")
+ 
+-find_library (LZ4_LIBRARY NAMES lz4 HINTS
++find_library (LZ4_LIBRARY NAMES lz4 liblz4 HINTS
+   ${_lz4_path}
+   PATH_SUFFIXES "lib" "lib64")
+ 
+diff --git a/cmake_modules/FindProtobuf.cmake b/cmake_modules/FindProtobuf.cmake
+index f2b6a7ca9..6f32e58f7 100644
+--- a/cmake_modules/FindProtobuf.cmake
++++ b/cmake_modules/FindProtobuf.cmake
+@@ -37,7 +37,7 @@ find_path (PROTOBUF_INCLUDE_DIR google/protobuf/io/coded_stream.h HINTS
+   NO_DEFAULT_PATH
+   PATH_SUFFIXES "include")
+ 
+-find_library (PROTOBUF_LIBRARY NAMES protobuf HINTS
++find_library (PROTOBUF_LIBRARY NAMES protobuf libprotobuf HINTS
+   ${_protobuf_path}
+   PATH_SUFFIXES "lib")
+ 
+@@ -45,7 +45,7 @@ find_library (PROTOBUF_STATIC_LIB NAMES ${CMAKE_STATIC_LIBRARY_PREFIX}protobuf${
+   ${_protobuf_path}
+   PATH_SUFFIXES "lib")
+ 
+-find_library (PROTOC_LIBRARY NAMES protoc HINTS
++find_library (PROTOC_LIBRARY NAMES protoc libprotoc HINTS
+   ${_protobuf_path}
+   PATH_SUFFIXES "lib")
+ 
+-- 
+2.38.1.windows.1
+

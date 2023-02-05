@@ -1,7 +1,7 @@
-From f45ae86fbcd645fb69808f1d373cd0151e5230cc Mon Sep 17 00:00:00 2001
+From 973fdd63c19564d95264eede1d769cfab1c8c7d7 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sat, 4 Feb 2023 20:50:40 +0000
-Subject: [PATCH 3/3] CMake: Add more hints for libraries on Windows
+Subject: [PATCH 3/4] CMake: Add more hints for libraries on Windows
 
 ---
  cmake_modules/FindLZ4.cmake      | 2 +-
@@ -44,5 +44,5 @@ index f2b6a7ca9..6f32e58f7 100644
    PATH_SUFFIXES "lib")
  
 -- 
-2.33.1
+2.38.1.windows.1
 

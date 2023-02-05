@@ -1,17 +1,17 @@
-From e58ecc69728783e0012dd7091228c2902223d425 Mon Sep 17 00:00:00 2001
+From 647fbbbb80ca7bb3b1e273eb8d9e7b0a4915cfec Mon Sep 17 00:00:00 2001
 From: "Korn, Uwe" <Uwe.Korn@blue-yonder.com>
 Date: Tue, 19 Mar 2019 11:16:02 +0100
-Subject: [PATCH 1/2] Deactivate aggressive failures on warnings
+Subject: [PATCH 1/4] Deactivate aggressive failures on warnings
 
 ---
  CMakeLists.txt | 2 ++
  1 file changed, 2 insertions(+)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 7c0e8413..03708879 100644
+index c0439e9ce..d19e6cd13 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -124,6 +124,8 @@ elseif (MSVC)
+@@ -135,6 +135,8 @@ elseif (MSVC)
    set (WARN_FLAGS "${WARN_FLAGS} -wd4146") # unary minus operator applied to unsigned type, result still unsigned
  endif ()
  
@@ -21,5 +21,5 @@ index 7c0e8413..03708879 100644
  
  INCLUDE(CheckSourceCompiles)
 -- 
-2.31.1
+2.38.1.windows.1
 

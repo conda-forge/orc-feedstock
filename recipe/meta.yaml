@@ -10,9 +10,9 @@ source:
   patches:
     # ORC builds by default with -Werror but some dependencies omit warnings.
     # This deactivates -Werror
-    - 0001-Deactivate-aggressive-failures-on-warnings.patch
-    - 0002-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
-    - 0003-CMake-Add-more-hints-for-libraries-on-Windows.patch
+    - patches/0001-Deactivate-aggressive-failures-on-warnings.patch
+    - patches/0002-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
+    - patches/0003-CMake-Add-more-hints-for-libraries-on-Windows.patch
 
 build:
   number: 1

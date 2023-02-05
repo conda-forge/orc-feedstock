@@ -36,8 +36,19 @@ requirements:
 
 test:
   commands:
-    - test -f $PREFIX/lib/liborc${SHLIB_EXT}  # [unix]
-    - test -f $PREFIX/include/orc/Common.hh   # [unix]
+    # shared libraries
+    - test -f $PREFIX/lib/liborc.so              # [linux]
+    - test -f $PREFIX/lib/liborc.dylib           # [osx]
+    - if not exist %LIBRARY_BIN%\orc.dll exit 1  # [win]
+    # import library for the DLL
+    - if not exist %LIBRARY_LIB%\orc.lib exit 1  # [win]
+
+    # absence of static libraries
+    - test ! -f $PREFIX/lib/liborc.a             # [not win]
+
+    # headers
+    - test -f $PREFIX/include/orc/Common.hh            # [unix]
+    - if not exist %LIBRARY_INC%\orc\Common.hh exit 1  # [win]
 
 about:
   home: http://github.com/apache/orc

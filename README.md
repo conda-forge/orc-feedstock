@@ -1,13 +1,15 @@
-About orc
-=========
+About orc-feedstock
+===================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/orc-feedstock/blob/main/LICENSE.txt)
 
 Home: http://github.com/apache/orc
 
 Package license: Apache-2.0
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/orc-feedstock/blob/main/LICENSE.txt)
-
 Summary: C++ libraries for Apache ORC
+
+Development: https://github.com/apache/orc
 
 Current build status
 ====================

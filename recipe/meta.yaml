@@ -16,7 +16,7 @@ source:
     - patches/0004-don-t-force-lib-destination.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage("orc", max_pin="x.x.x") }}
 

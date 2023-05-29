@@ -1,7 +1,7 @@
-From 6e9afb4f80c2c9e197d572add1cea19848276072 Mon Sep 17 00:00:00 2001
+From f4ad8c0dcd9d063b4409e99ba787be57eaf24bca Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Sun, 5 Feb 2023 15:32:08 +1100
-Subject: [PATCH 4/4] don't force lib destination
+Subject: [PATCH 4/5] don't force lib destination
 
 ---
  c++/src/CMakeLists.txt | 2 +-
@@ -18,5 +18,5 @@ index 442806ee8..7b0829df4 100644
 -install(TARGETS orc DESTINATION lib)
 +install(TARGETS orc)
 -- 
-2.38.1.windows.1
+2.40.0
 

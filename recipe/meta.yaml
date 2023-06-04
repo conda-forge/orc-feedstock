@@ -14,9 +14,11 @@ source:
     - patches/0002-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
     - patches/0003-CMake-Add-more-hints-for-libraries-on-Windows.patch
     - patches/0004-don-t-force-lib-destination.patch
+    - patches/0005-ORC-1301-C-Enforce-C-17.patch
+    - patches/0006-Check-for-protobuf-config-based-module.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage("orc", max_pin="x.x.x") }}
 

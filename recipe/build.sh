@@ -19,7 +19,6 @@ if [[ ${HOST} =~ .*darwin.* ]]; then
     CXXFLAGS="${CXXFLAGS} -DPROTOBUF_USE_DLLS"
 fi
 if [[ ${HOST} =~ .*linux.* ]]; then
-    CXXFLAGS="${CXXFLAGS//-std=c++17/-std=c++11}"
     # I hate you so much CMake.
     LIBPTHREAD=$(find ${PREFIX} -name "libpthread.so")
     _CMAKE_EXTRA_CONFIG+=(-DPTHREAD_LIBRARY=${LIBPTHREAD})

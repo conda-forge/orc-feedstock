@@ -1,4 +1,4 @@
-From f4ad8c0dcd9d063b4409e99ba787be57eaf24bca Mon Sep 17 00:00:00 2001
+From 224455b380dc836ad5cac5ec367aced98345474d Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Sun, 5 Feb 2023 15:32:08 +1100
 Subject: [PATCH 4/5] don't force lib destination
@@ -8,15 +8,15 @@ Subject: [PATCH 4/5] don't force lib destination
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/c++/src/CMakeLists.txt b/c++/src/CMakeLists.txt
-index 442806ee8..7b0829df4 100644
+index 898f223f4..b0eed1c7c 100644
 --- a/c++/src/CMakeLists.txt
 +++ b/c++/src/CMakeLists.txt
-@@ -247,4 +247,4 @@ target_link_libraries (orc
+@@ -217,4 +217,4 @@ target_link_libraries (orc
    ${LIBHDFSPP_LIBRARIES}
    )
  
 -install(TARGETS orc DESTINATION lib)
 +install(TARGETS orc)
 -- 
-2.40.0
+2.41.0
 

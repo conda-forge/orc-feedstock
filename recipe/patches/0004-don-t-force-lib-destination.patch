@@ -1,4 +1,4 @@
-From 224455b380dc836ad5cac5ec367aced98345474d Mon Sep 17 00:00:00 2001
+From 23e5a0713a52068d65fbf06c481b42e8cc1720de Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Sun, 5 Feb 2023 15:32:08 +1100
 Subject: [PATCH 4/5] don't force lib destination
@@ -18,5 +18,5 @@ index 898f223f4..b0eed1c7c 100644
 -install(TARGETS orc DESTINATION lib)
 +install(TARGETS orc)
 -- 
-2.41.0
+2.42.0
 

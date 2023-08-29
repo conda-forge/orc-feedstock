@@ -1,4 +1,4 @@
-From 85e312956a4868c96fd44c19d77b898519838b93 Mon Sep 17 00:00:00 2001
+From 7e1dae90ce5b1f39d3c8a2b9daeb1ba702e73aa4 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 4 Jun 2023 10:35:32 +0100
 Subject: [PATCH 5/5] Check for protobuf config based module
@@ -37,5 +37,5 @@ index 8af45bd92..ecbb7c933 100644
      file (TO_CMAKE_PATH "${PROTOBUF_HOME}" _protobuf_path)
  endif()
 -- 
-2.41.0
+2.42.0
 

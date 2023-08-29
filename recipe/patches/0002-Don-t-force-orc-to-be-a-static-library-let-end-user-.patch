@@ -1,4 +1,4 @@
-From fdf87a2f344a25e0e92a174fc3acbccc200b9f11 Mon Sep 17 00:00:00 2001
+From 3e46d56563738289444dba3c97d910ae5442b78b Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Fri, 25 Sep 2020 14:49:59 -0400
 Subject: [PATCH 2/5] Don't force orc to be a static library, let end user
@@ -22,5 +22,5 @@ index 972f2fc03..898f223f4 100644
  target_link_libraries (orc
    orc::protobuf
 -- 
-2.41.0
+2.42.0
 

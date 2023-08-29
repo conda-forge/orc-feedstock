@@ -1,4 +1,4 @@
-From b449aaf29458c56777387f50217c45747626675f Mon Sep 17 00:00:00 2001
+From 2833f5378df6eeea55b25b314649bf743c88672d Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sat, 4 Feb 2023 20:50:40 +0000
 Subject: [PATCH 3/5] CMake: Add more hints for libraries on Windows
@@ -44,5 +44,5 @@ index c52f3131d..8af45bd92 100644
    PATH_SUFFIXES "lib")
  
 -- 
-2.41.0
+2.42.0
 

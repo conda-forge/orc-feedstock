@@ -16,7 +16,7 @@ if [[ ${HOST} =~ .*darwin.* ]]; then
     _CMAKE_EXTRA_CONFIG+=(-DCMAKE_AR=${AR})
     _CMAKE_EXTRA_CONFIG+=(-DCMAKE_RANLIB=${RANLIB})
     _CMAKE_EXTRA_CONFIG+=(-DCMAKE_LINKER=${LD})
-    CXXFLAGS="${CXXFLAGS} -DPROTOBUF_USE_DLLS"
+    CXXFLAGS="${CXXFLAGS} -DPROTOBUF_USE_DLLS -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
 if [[ ${HOST} =~ .*linux.* ]]; then
     # I hate you so much CMake.

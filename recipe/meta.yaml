@@ -17,7 +17,7 @@ source:
     - patches/0005-Check-for-protobuf-config-based-module.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage("orc", max_pin="x.x.x") }}
 

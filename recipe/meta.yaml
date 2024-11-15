@@ -1,4 +1,4 @@
-{% set version = "2.0.2" %}
+{% set version = "2.0.3" %}
 
 package:
   name: orc
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://archive.apache.org/dist/orc/orc-{{ version }}/orc-{{ version }}.tar.gz
-  sha256: fabdee3e8acd64dae1e8b8987149a7188121b40b025de46d15cc9d0becee2279
+  sha256: 082cba862b5a8a0d14c225404d0b51cd8d1b64ca81b8f1e500322ce8922cb86d
   patches:
     # ORC builds by default with -Werror but some dependencies omit warnings.
     # This deactivates -Werror
@@ -17,7 +17,7 @@ source:
     - patches/0005-Check-for-protobuf-config-based-module.patch
 
 build:
-  number: 2
+  number: 0
   run_exports:
     - {{ pin_subpackage("orc", max_pin="x.x.x") }}
 

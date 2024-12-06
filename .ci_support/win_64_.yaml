@@ -11,7 +11,9 @@ cxx_compiler:
 libprotobuf:
 - 5.28.2
 lz4_c:
-- 1.9.3
+- '1.10'
+orc:
+- 2.0.3
 snappy:
 - '1.2'
 target_platform:

@@ -13,7 +13,7 @@ source:
     - patches/0001-Deactivate-aggressive-failures-on-warnings.patch
     - patches/0002-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
     - patches/0003-Check-for-protobuf-config-based-module.patch
-    - patches/0004-fix-capitalization-of-Protobuf.patch
+    - patches/0004-fix-capitalization-of-Protobuf-search-harder-use-_DI.patch
 
 build:
   number: 0

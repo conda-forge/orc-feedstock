@@ -1,7 +1,7 @@
 From 76df4aaedd0d09fbf1a38f0a18b6d205233340ea Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sun, 4 Jun 2023 10:35:32 +0100
-Subject: [PATCH 3/3] Check for protobuf config based module
+Subject: [PATCH 3/4] Check for protobuf config based module
 
 ---
  cmake_modules/FindProtobuf.cmake | 18 ++++++++++++++++++

@@ -1,0 +1,42 @@
+From 96d2071527bf4811c18f5c5dcddea1009dd23258 Mon Sep 17 00:00:00 2001
+From: "H. Vetinari" <h.vetinari@gmx.com>
+Date: Fri, 10 Jan 2025 18:08:59 +0100
+Subject: [PATCH 4/4] fix capitalization of Protobuf
+
+---
+ cmake_modules/ThirdpartyToolchain.cmake | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/cmake_modules/ThirdpartyToolchain.cmake b/cmake_modules/ThirdpartyToolchain.cmake
+index 017e6c5b8..770c1eecd 100644
+--- a/cmake_modules/ThirdpartyToolchain.cmake
++++ b/cmake_modules/ThirdpartyToolchain.cmake
+@@ -491,7 +491,7 @@ endif ()
+ 
+ if (ORC_PACKAGE_KIND STREQUAL "conan")
+   find_package (Protobuf REQUIRED CONFIG)
+-  add_resolved_library (orc_protobuf ${protobuf_LIBRARIES} ${protobuf_INCLUDE_DIR})
++  add_resolved_library (orc_protobuf ${Protobuf_LIBRARIES} ${Protobuf_INCLUDE_DIR})
+   list (APPEND ORC_SYSTEM_DEPENDENCIES Protobuf)
+   list (APPEND ORC_INSTALL_INTERFACE_TARGETS "$<INSTALL_INTERFACE:protobuf::libprotobuf>")
+ elseif (ORC_PACKAGE_KIND STREQUAL "vcpkg")
+@@ -505,15 +505,15 @@ elseif (NOT "${PROTOBUF_HOME}" STREQUAL "")
+   find_package (Protobuf REQUIRED)
+ 
+   if (ORC_PREFER_STATIC_PROTOBUF AND PROTOBUF_STATIC_LIB)
+-    add_resolved_library (orc_protobuf ${PROTOBUF_STATIC_LIB} ${PROTOBUF_INCLUDE_DIR})
++    add_resolved_library (orc_protobuf ${PROTOBUF_STATIC_LIB} ${Protobuf_INCLUDE_DIR})
+   else ()
+-    add_resolved_library (orc_protobuf ${PROTOBUF_LIBRARY} ${PROTOBUF_INCLUDE_DIR})
++    add_resolved_library (orc_protobuf ${Protobuf_LIBRARY} ${Protobuf_INCLUDE_DIR})
+   endif ()
+ 
+   if (ORC_PREFER_STATIC_PROTOBUF AND PROTOC_STATIC_LIB)
+-    add_resolved_library (orc_protoc ${PROTOC_STATIC_LIB} ${PROTOBUF_INCLUDE_DIR})
++    add_resolved_library (orc_protoc ${PROTOC_STATIC_LIB} ${Protobuf_INCLUDE_DIR})
+   else ()
+-    add_resolved_library (orc_protoc ${PROTOC_LIBRARY} ${PROTOBUF_INCLUDE_DIR})
++    add_resolved_library (orc_protoc ${Protobuf_PROTOC_LIBRARY} ${Protobuf_INCLUDE_DIR})
+   endif ()
+ 
+   list (APPEND ORC_SYSTEM_DEPENDENCIES Protobuf)

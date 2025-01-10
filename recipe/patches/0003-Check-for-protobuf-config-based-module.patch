@@ -1,0 +1,38 @@
+From 76df4aaedd0d09fbf1a38f0a18b6d205233340ea Mon Sep 17 00:00:00 2001
+From: Nehal J Wani <nehaljw.kkd1@gmail.com>
+Date: Sun, 4 Jun 2023 10:35:32 +0100
+Subject: [PATCH 3/3] Check for protobuf config based module
+
+---
+ cmake_modules/FindProtobuf.cmake | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/cmake_modules/FindProtobuf.cmake b/cmake_modules/FindProtobuf.cmake
+index ca91fb5ad..f39717dc5 100644
+--- a/cmake_modules/FindProtobuf.cmake
++++ b/cmake_modules/FindProtobuf.cmake
+@@ -39,6 +39,24 @@ if (NOT PROTOBUF_HOME)
+   endif ()
+ endif ()
+ 
++find_package(Protobuf CONFIG)
++if(Protobuf_FOUND)
++    set(PROTOBUF_LIBRARY protobuf::libprotobuf)
++    set(PROTOBUF_STATIC_LIB PROTOBUF_STATIC_LIB-NOTFOUND)
++    set(PROTOC_LIBRARY protobuf::libprotoc)
++    set(PROTOC_STATIC_LIB PROTOC_STATIC_LIB-NOTFOUND)
++    get_target_property(target_type protobuf::libprotobuf TYPE)
++    if(target_type STREQUAL "STATIC_LIBRARY")
++        set(PROTOBUF_STATIC_LIB protobuf::libprotobuf)
++    endif()
++    get_target_property(target_type protobuf::libprotoc TYPE)
++    if(target_type STREQUAL "STATIC_LIBRARY")
++        set(PROTOC_STATIC_LIB protobuf::libprotoc)
++    endif()
++    get_target_property(PROTOBUF_INCLUDE_DIR protobuf::libprotoc INTERFACE_INCLUDE_DIRECTORIES)
++    return()
++endif()
++
+ if( NOT "${PROTOBUF_HOME}" STREQUAL "")
+     file (TO_CMAKE_PATH "${PROTOBUF_HOME}" _protobuf_path)
+ endif()

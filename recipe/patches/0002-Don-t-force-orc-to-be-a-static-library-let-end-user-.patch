@@ -1,7 +1,7 @@
-From 43d34904ff88211396be6a3572718c3d3bef6cb9 Mon Sep 17 00:00:00 2001
+From 31ab2e83f667553b8c7475b540474062bc6c29d2 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Fri, 25 Sep 2020 14:49:59 -0400
-Subject: [PATCH 2/5] Don't force orc to be a static library, let end user
+Subject: [PATCH 2/3] Don't force orc to be a static library, let end user
  control it
 
 ---
@@ -9,10 +9,10 @@ Subject: [PATCH 2/5] Don't force orc to be a static library, let end user
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/c++/src/CMakeLists.txt b/c++/src/CMakeLists.txt
-index 33ad584..f5a806a 100644
+index 694667c06..175c032ca 100644
 --- a/c++/src/CMakeLists.txt
 +++ b/c++/src/CMakeLists.txt
-@@ -206,7 +206,7 @@ if(BUILD_ENABLE_AVX512)
+@@ -200,7 +200,7 @@ if(BUILD_ENABLE_AVX512)
      BpackingAvx512.cc)
  endif(BUILD_ENABLE_AVX512)
  
@@ -20,4 +20,4 @@ index 33ad584..f5a806a 100644
 +add_library (orc ${SOURCE_FILES})
  
  target_link_libraries (orc
-   orc::protobuf
+   INTERFACE

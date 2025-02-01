@@ -8,13 +8,8 @@ source:
   url: https://archive.apache.org/dist/orc/orc-{{ version }}/orc-{{ version }}.tar.gz
   sha256: 69d45665bfb5699b709094ba630ae4b186b19e083c4438855fc29c77125c149c
   patches:
-    # ORC builds by default with -Werror but some dependencies omit warnings.
-    # This deactivates -Werror
-    - patches/0001-Deactivate-aggressive-failures-on-warnings.patch
-    - patches/0002-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
-    - patches/0003-CMake-Add-more-hints-for-libraries-on-Windows.patch
-    - patches/0004-don-t-force-lib-destination.patch
-    - patches/0005-Check-for-protobuf-config-based-module.patch
+    - patches/0001-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
+    - patches/0002-Allow-user-to-override-path-to-protoc.patch
 
 build:
   number: 0

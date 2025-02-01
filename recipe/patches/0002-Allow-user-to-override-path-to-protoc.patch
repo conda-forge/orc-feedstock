@@ -1,0 +1,29 @@
+From 68461edc1331b57f1cc130e6c084174de2d88bdd Mon Sep 17 00:00:00 2001
+From: Nehal J Wani <nehaljw.kkd1@gmail.com>
+Date: Sat, 1 Feb 2025 18:53:55 +0000
+Subject: [PATCH 2/2] Allow user to override /path/to/protoc
+
+Useful for cross-compilation
+---
+ cmake_modules/FindProtobuf.cmake | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/cmake_modules/FindProtobuf.cmake b/cmake_modules/FindProtobuf.cmake
+index ca91fb5ad..cf02a1199 100644
+--- a/cmake_modules/FindProtobuf.cmake
++++ b/cmake_modules/FindProtobuf.cmake
+@@ -60,7 +60,10 @@ if (Protobuf_FOUND)
+     set (PROTOBUF_STATIC_LIB PROTOBUF_STATIC_LIB-NOTFOUND)
+     set (PROTOC_LIBRARY protobuf::libprotoc)
+     set (PROTOC_STATIC_LIB PROTOC_STATIC_LIB-NOTFOUND)
+-    set (PROTOBUF_EXECUTABLE protobuf::protoc)
++    # https://github.com/protocolbuffers/protobuf/issues/14576
++    if (NOT DEFINED PROTOBUF_EXECUTABLE)
++      set (PROTOBUF_EXECUTABLE protobuf::protoc)
++    endif ()
+ 
+     get_target_property (target_type protobuf::libprotobuf TYPE)
+     if (target_type STREQUAL "STATIC_LIBRARY")
+-- 
+2.47.1
+

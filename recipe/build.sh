@@ -18,11 +18,6 @@ if [[ ${HOST} =~ .*darwin.* ]]; then
     _CMAKE_EXTRA_CONFIG+=(-DCMAKE_LINKER=${LD})
     CXXFLAGS="${CXXFLAGS} -DPROTOBUF_USE_DLLS -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
-if [[ ${HOST} =~ .*linux.* ]]; then
-    # I hate you so much CMake.
-    LIBPTHREAD=$(find ${PREFIX} -name "libpthread.so")
-    _CMAKE_EXTRA_CONFIG+=(-DPTHREAD_LIBRARY=${LIBPTHREAD})
-fi
 
 CPPFLAGS="${CPPFLAGS} -Wl,-rpath,$PREFIX/lib"
 
@@ -34,13 +29,13 @@ cmake ${CMAKE_ARGS} \
     -DLZ4_HOME=$PREFIX \
     -DZLIB_HOME=$PREFIX \
     -DZSTD_HOME=$PREFIX \
-    -DCMAKE_POLICY_DEFAULT_CMP0074=NEW \
     -DProtobuf_ROOT=$PREFIX \
     -DPROTOBUF_HOME=$PREFIX \
     -DPROTOBUF_EXECUTABLE=$BUILD_PREFIX/bin/protoc \
     -DSNAPPY_HOME=$PREFIX \
     -DBUILD_LIBHDFSPP=NO \
     -DBUILD_CPP_TESTS=OFF \
+    -DSTOP_BUILD_ON_WARNING=OFF \
     -DCMAKE_INSTALL_PREFIX=$PREFIX \
     -DCMAKE_C_COMPILER=$(type -p ${CC})     \
     -DCMAKE_CXX_COMPILER=$(type -p ${CXX})  \

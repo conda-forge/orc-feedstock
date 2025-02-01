@@ -1,4 +1,4 @@
-{% set version = "2.0.3" %}
+{% set version = "2.1.0" %}
 
 package:
   name: orc
@@ -6,18 +6,13 @@ package:
 
 source:
   url: https://archive.apache.org/dist/orc/orc-{{ version }}/orc-{{ version }}.tar.gz
-  sha256: 082cba862b5a8a0d14c225404d0b51cd8d1b64ca81b8f1e500322ce8922cb86d
+  sha256: 69d45665bfb5699b709094ba630ae4b186b19e083c4438855fc29c77125c149c
   patches:
-    # ORC builds by default with -Werror but some dependencies omit warnings.
-    # This deactivates -Werror
-    - patches/0001-Deactivate-aggressive-failures-on-warnings.patch
-    - patches/0002-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
-    - patches/0003-CMake-Add-more-hints-for-libraries-on-Windows.patch
-    - patches/0004-don-t-force-lib-destination.patch
-    - patches/0005-Check-for-protobuf-config-based-module.patch
+    - patches/0001-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
+    - patches/0002-Allow-user-to-override-path-to-protoc.patch
 
 build:
-  number: 2
+  number: 0
   run_exports:
     - {{ pin_subpackage("orc", max_pin="x.x.x") }}
 

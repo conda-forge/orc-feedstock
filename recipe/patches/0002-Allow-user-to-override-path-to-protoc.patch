@@ -1,7 +1,7 @@
-From 68461edc1331b57f1cc130e6c084174de2d88bdd Mon Sep 17 00:00:00 2001
+From 86e901e9e6a035b4bd01a22bd8a48f3dd4443b8a Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sat, 1 Feb 2025 18:53:55 +0000
-Subject: [PATCH 2/2] Allow user to override /path/to/protoc
+Subject: [PATCH 2/3] Allow user to override /path/to/protoc
 
 Useful for cross-compilation
 ---
@@ -24,6 +24,3 @@ index ca91fb5ad..cf02a1199 100644
  
      get_target_property (target_type protobuf::libprotobuf TYPE)
      if (target_type STREQUAL "STATIC_LIBRARY")
--- 
-2.47.1
-

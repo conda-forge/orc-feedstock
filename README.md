@@ -88,14 +88,14 @@ Current release info
 Installing orc
 ==============
 
-Installing `orc` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `orc` from the `conda-forge/label/orc_dev` channel can be achieved by adding `conda-forge/label/orc_dev` to your channels with:
 
 ```
-conda config --add channels conda-forge
+conda config --add channels conda-forge/label/orc_dev
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `orc` can be installed with `conda`:
+Once the `conda-forge/label/orc_dev` channel has been enabled, `orc` can be installed with `conda`:
 
 ```
 conda install orc
@@ -110,26 +110,26 @@ mamba install orc
 It is possible to list all of the versions of `orc` available on your platform with `conda`:
 
 ```
-conda search orc --channel conda-forge
+conda search orc --channel conda-forge/label/orc_dev
 ```
 
 or with `mamba`:
 
 ```
-mamba search orc --channel conda-forge
+mamba search orc --channel conda-forge/label/orc_dev
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search orc --channel conda-forge
+mamba repoquery search orc --channel conda-forge/label/orc_dev
 
 # List packages depending on `orc`:
-mamba repoquery whoneeds orc --channel conda-forge
+mamba repoquery whoneeds orc --channel conda-forge/label/orc_dev
 
 # List dependencies of `orc`:
-mamba repoquery depends orc --channel conda-forge
+mamba repoquery depends orc --channel conda-forge/label/orc_dev
 ```
 
 

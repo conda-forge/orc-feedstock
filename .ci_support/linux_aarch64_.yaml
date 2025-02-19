@@ -11,7 +11,7 @@ cdt_name:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge main
+- conda-forge orc_dev
 cxx_compiler:
 - gxx
 cxx_compiler_version:
@@ -23,7 +23,7 @@ libprotobuf:
 lz4_c:
 - '1.10'
 orc:
-- 2.0.3
+- 2.1.0
 snappy:
 - '1.2'
 target_platform:

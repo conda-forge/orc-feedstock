@@ -5,7 +5,7 @@ c_stdlib:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge main
+- conda-forge orc_dev
 cxx_compiler:
 - vs2019
 libprotobuf:
@@ -13,7 +13,7 @@ libprotobuf:
 lz4_c:
 - '1.10'
 orc:
-- 2.0.3
+- 2.1.0
 snappy:
 - '1.2'
 target_platform:

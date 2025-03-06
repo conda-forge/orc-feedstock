@@ -10,8 +10,6 @@ source:
   patches:
     - patches/0001-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
     - patches/0002-Allow-user-to-override-path-to-protoc.patch
-    # backport https://github.com/apache/orc/pull/2108
-    - patches/0003-ORC-1833-C-Fix-CMake-script-to-be-used-inside-anothe.patch
 
 build:
   number: 0

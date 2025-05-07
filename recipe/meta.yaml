@@ -1,4 +1,4 @@
-{% set version = "2.1.1" %}
+{% set version = "2.1.2" %}
 
 package:
   name: orc
@@ -6,13 +6,13 @@ package:
 
 source:
   url: https://archive.apache.org/dist/orc/orc-{{ version }}/orc-{{ version }}.tar.gz
-  sha256: 15af8baeee322bab0298559a14a09cf8c14cf2008e35d8a78d3cc8a4c98d1e59
+  sha256: 55451e65dea6ed42afb39fe33a88f9dcea8928dca0a0c9c23ef5545587810b4c
   patches:
     - patches/0001-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
     - patches/0002-Allow-user-to-override-path-to-protoc.patch
 
 build:
-  number: 1
+  number: 0
   run_exports:
     - {{ pin_subpackage("orc", max_pin="x.x.x") }}
 

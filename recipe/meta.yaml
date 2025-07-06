@@ -12,7 +12,7 @@ source:
     - patches/0002-Allow-user-to-override-path-to-protoc.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage("orc", max_pin="x.x.x") }}
 

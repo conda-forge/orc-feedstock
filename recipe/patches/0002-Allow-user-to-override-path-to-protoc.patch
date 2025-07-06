@@ -1,4 +1,4 @@
-From 86e901e9e6a035b4bd01a22bd8a48f3dd4443b8a Mon Sep 17 00:00:00 2001
+From 99853dd87130059445e8064026adf51789314873 Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sat, 1 Feb 2025 18:53:55 +0000
 Subject: [PATCH 2/3] Allow user to override /path/to/protoc

@@ -5,8 +5,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://archive.apache.org/dist/orc/orc-{{ version }}/orc-{{ version }}.tar.gz
-  sha256: db56c6173df2e937ec9e2c282748e27897d82c1422e7d7c4d34ab626c18338b2
+  url: https://github.com/apache/orc/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 37c6421fe7184bd58c06685fb39f8905de57d91a72f3d19164ed5c3d70d50ac0
   patches:
     - patches/0001-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
     - patches/0002-Allow-user-to-override-path-to-protoc.patch

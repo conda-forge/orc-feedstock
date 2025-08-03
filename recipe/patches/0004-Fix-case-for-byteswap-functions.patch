@@ -1,0 +1,27 @@
+From bd1ef6342fd7a74138551a1ed6038718dbab3e74 Mon Sep 17 00:00:00 2001
+From: Nehal J Wani <nehaljw.kkd1@gmail.com>
+Date: Sun, 3 Aug 2025 10:46:11 +0100
+Subject: [PATCH 4/4] Fix case for byteswap functions
+
+---
+ c++/src/Geospatial.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/c++/src/Geospatial.cc b/c++/src/Geospatial.cc
+index 6d7d26870..2b110cacb 100644
+--- a/c++/src/Geospatial.cc
++++ b/c++/src/Geospatial.cc
+@@ -66,8 +66,8 @@ namespace orc::geospatial {
+ 
+ #if defined(_MSC_VER)
+ #include <intrin.h>  // IWYU pragma: keep
+-#define ORC_BYTE_SWAP64 _byteSwap_uint64
+-#define ORC_BYTE_SWAP32 _byteSwap_ulong
++#define ORC_BYTE_SWAP64 _byteswap_uint64
++#define ORC_BYTE_SWAP32 _byteswap_ulong
+ #else
+ #define ORC_BYTE_SWAP64 __builtin_bswap64
+ #define ORC_BYTE_SWAP32 __builtin_bswap32
+-- 
+2.50.0
+

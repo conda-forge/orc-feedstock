@@ -1,7 +1,7 @@
-From 99853dd87130059445e8064026adf51789314873 Mon Sep 17 00:00:00 2001
+From e3b09ae842e79f10a6b6f7a1bae07827eb2641aa Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sat, 1 Feb 2025 18:53:55 +0000
-Subject: [PATCH 2/3] Allow user to override /path/to/protoc
+Subject: [PATCH 2/2] Allow user to override /path/to/protoc
 
 Useful for cross-compilation
 ---

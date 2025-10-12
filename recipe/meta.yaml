@@ -5,8 +5,8 @@ package:
   version: {{ version }}
 
 source:
-  git_url: https://github.com/apache/orc.git
-  git_rev: main
+  git_url: https://github.com/wgtmac/orc.git
+  git_rev: fix_conda
   patches:
     - patches/0001-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
 

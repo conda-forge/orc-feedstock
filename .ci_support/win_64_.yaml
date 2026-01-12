@@ -13,7 +13,7 @@ libprotobuf:
 lz4_c:
 - '1.10'
 orc:
-- 2.2.0
+- 2.2.1
 snappy:
 - '1.2'
 target_platform:

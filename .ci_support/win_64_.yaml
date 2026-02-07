@@ -9,11 +9,11 @@ channel_targets:
 cxx_compiler:
 - vs2022
 libprotobuf:
-- 6.31.1
+- 6.33.5
 lz4_c:
 - '1.10'
 orc:
-- 2.2.1
+- 2.2.2
 snappy:
 - '1.2'
 target_platform:

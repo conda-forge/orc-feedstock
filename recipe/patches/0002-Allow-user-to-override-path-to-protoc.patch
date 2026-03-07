@@ -1,18 +1,18 @@
-From e3b09ae842e79f10a6b6f7a1bae07827eb2641aa Mon Sep 17 00:00:00 2001
+From 298870822846180846c67a16da06a38ac7df6f0b Mon Sep 17 00:00:00 2001
 From: Nehal J Wani <nehaljw.kkd1@gmail.com>
 Date: Sat, 1 Feb 2025 18:53:55 +0000
 Subject: [PATCH 2/2] Allow user to override /path/to/protoc
 
 Useful for cross-compilation
 ---
- cmake_modules/FindProtobuf.cmake | 5 ++++-
+ cmake_modules/FindProtobufAlt.cmake | 5 ++++-
  1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/cmake_modules/FindProtobuf.cmake b/cmake_modules/FindProtobuf.cmake
-index ca91fb5ad..cf02a1199 100644
---- a/cmake_modules/FindProtobuf.cmake
-+++ b/cmake_modules/FindProtobuf.cmake
-@@ -60,7 +60,10 @@ if (Protobuf_FOUND)
+diff --git a/cmake_modules/FindProtobufAlt.cmake b/cmake_modules/FindProtobufAlt.cmake
+index efc004136..9292c6433 100644
+--- a/cmake_modules/FindProtobufAlt.cmake
++++ b/cmake_modules/FindProtobufAlt.cmake
+@@ -60,7 +60,10 @@ if (ProtobufAlt_FOUND)
      set (PROTOBUF_STATIC_LIB PROTOBUF_STATIC_LIB-NOTFOUND)
      set (PROTOC_LIBRARY protobuf::libprotoc)
      set (PROTOC_STATIC_LIB PROTOC_STATIC_LIB-NOTFOUND)

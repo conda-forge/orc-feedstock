@@ -1,0 +1,21 @@
+From 56f6c9b4a8e573a9ec0c4df44c1a0d033d0a82bc Mon Sep 17 00:00:00 2001
+From: "Uwe L. Korn" <uwe.korn@quantco.com>
+Date: Wed, 11 Mar 2026 11:24:39 +0000
+Subject: [PATCH 3/3] Link to abseil libraries
+
+---
+ c++/src/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/c++/src/CMakeLists.txt b/c++/src/CMakeLists.txt
+index c0cee77..a309170 100644
+--- a/c++/src/CMakeLists.txt
++++ b/c++/src/CMakeLists.txt
+@@ -207,6 +207,7 @@ target_link_libraries (orc
+   INTERFACE
+     ${ORC_INSTALL_INTERFACE_TARGETS}
+   PUBLIC
++    absl_raw_hash_set
+     $<BUILD_INTERFACE:orc::protobuf>
+     $<BUILD_INTERFACE:orc::zlib>
+     $<BUILD_INTERFACE:orc::Snappy>

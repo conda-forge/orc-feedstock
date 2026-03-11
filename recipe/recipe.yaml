@@ -1,0 +1,69 @@
+schema_version: 1
+
+context:
+  version: "2.3.0"
+
+package:
+  name: orc
+  version: ${{ version }}
+
+source:
+  url: https://github.com/apache/orc/archive/refs/tags/v${{ version }}.tar.gz
+  sha256: d38b871c3989304d79c28c291bc80819b4585d7cea88d16243f74842a7e2a953
+  patches:
+    - patches/0001-Don-t-force-orc-to-be-a-static-library-let-end-user-.patch
+    - patches/0002-Allow-user-to-override-path-to-protoc.patch
+    - patches/0003-Link-to-abseil-libraries.patch
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('cxx') }}
+    - if: unix
+      then: ninja
+    # `protoc` is also used for building
+    - libprotobuf
+    - cmake
+  host:
+    - zlib
+    - snappy
+    - libabseil
+    - libprotobuf
+    - lz4-c
+    - zstd
+  run:
+    # orc >=2.0.1 will prefer $CONDA_PREFIX/share/zoneinfo for tzdb
+    - tzdata
+  run_exports:
+    - ${{ pin_subpackage("orc", upper_bound="x.x.x") }}
+
+tests:
+  - script:
+      - if: unix
+        then: 
+          - test -f $PREFIX/lib/liborc${SHLIB_EXT}
+          - test -f $PREFIX/include/orc/Common.hh
+          - test ! -f $PREFIX/lib/liborc.a
+      - if: win
+        then: 
+          - if not exist %LIBRARY_BIN%\orc.dll exit 1
+          - if not exist %LIBRARY_LIB%\orc.lib exit 1
+          - if not exist %LIBRARY_INC%\orc\Common.hh exit 1
+
+about:
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: C++ libraries for Apache ORC
+  homepage: http://github.com/apache/orc
+  repository: https://github.com/apache/orc
+
+extra:
+  recipe-maintainers:
+    - wesm
+    - xhochy
+    - nehaljwani
+    - h-vetinari

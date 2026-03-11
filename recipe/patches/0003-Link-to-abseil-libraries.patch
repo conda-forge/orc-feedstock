@@ -1,0 +1,31 @@
+From 89e6eaa5be0a62533063fd9520ea60370a7e37a9 Mon Sep 17 00:00:00 2001
+From: "Uwe L. Korn" <uwe.korn@quantco.com>
+Date: Wed, 11 Mar 2026 11:24:39 +0000
+Subject: [PATCH 3/3] Link to abseil libraries
+
+---
+ c++/src/CMakeLists.txt | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/c++/src/CMakeLists.txt b/c++/src/CMakeLists.txt
+index c0cee77..bcbbbb1 100644
+--- a/c++/src/CMakeLists.txt
++++ b/c++/src/CMakeLists.txt
+@@ -215,6 +215,17 @@ target_link_libraries (orc
+     $<BUILD_INTERFACE:${LIBHDFSPP_LIBRARIES}>
+     $<BUILD_INTERFACE:$<TARGET_NAME_IF_EXISTS:orc::sparsehash>>
+   )
++if(MSVC)
++  target_link_libraries (orc
++    PUBLIC
++      abseil_dll
++  )
++else(MSVC)
++  target_link_libraries (orc
++    PUBLIC
++      absl_raw_hash_set
++  )
++endif(MSVC)
+ 
+ target_include_directories (orc
+   INTERFACE

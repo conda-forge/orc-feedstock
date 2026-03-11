@@ -8,12 +8,12 @@ channel_targets:
 - conda-forge main
 cxx_compiler:
 - vs2022
+libabseil:
+- '20260107'
 libprotobuf:
 - 6.33.5
 lz4_c:
 - '1.10'
-orc:
-- 2.2.2
 snappy:
 - '1.2'
 target_platform:

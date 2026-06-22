@@ -16,7 +16,7 @@ source:
     - patches/0003-Link-to-abseil-libraries.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -44,12 +44,12 @@ requirements:
 tests:
   - script:
       - if: unix
-        then: 
+        then:
           - test -f $PREFIX/lib/liborc${SHLIB_EXT}
           - test -f $PREFIX/include/orc/Common.hh
           - test ! -f $PREFIX/lib/liborc.a
       - if: win
-        then: 
+        then:
           - if not exist %LIBRARY_BIN%\orc.dll exit 1
           - if not exist %LIBRARY_LIB%\orc.lib exit 1
           - if not exist %LIBRARY_INC%\orc\Common.hh exit 1

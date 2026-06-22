@@ -9,9 +9,9 @@ channel_targets:
 cxx_compiler:
 - vs2022
 libabseil:
-- '20260107'
+- '20260526'
 libprotobuf:
-- 6.33.5
+- 7.35.1
 lz4_c:
 - '1.10'
 snappy:

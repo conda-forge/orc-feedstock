@@ -9,7 +9,7 @@ channel_targets:
 cxx_compiler:
 - vs2022
 libabseil:
-- '20260526'
+- '20260817'
 libprotobuf:
 - 7.35.1
 lz4_c:

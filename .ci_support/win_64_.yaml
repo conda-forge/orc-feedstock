@@ -15,7 +15,7 @@ libprotobuf:
 lz4_c:
 - '1.10'
 snappy:
-- '1.2'
+- '1.3'
 target_platform:
 - win-64
 zlib:

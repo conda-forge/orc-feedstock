@@ -1,0 +1,40 @@
+From ec611b96ec33b64b139fcd74739d57332042f025 Mon Sep 17 00:00:00 2001
+From: "Uwe L. Korn" <Uwe L. Korn>
+Date: Thu, 12 Nov 2026 16:38:25 +0000
+Subject: [PATCH] Only download the time zone database for the Windows test
+ build
+
+The WIN32 branch of ThirdpartyToolchain.cmake fetches
+sha512.sum and a tzdata-right tarball from cygwin.osuosl.org at configure
+and build time. The resulting TZDATA_DIR is only consumed by the C++
+tests (c++/test/CMakeLists.txt sets TZDIR from it), so a build with
+BUILD_CPP_TESTS=OFF - like the conda-forge build - does not need it at
+all and currently fails whenever that mirror is unavailable.
+
+At runtime ORC reads TZDIR or $CONDA_PREFIX/share/zoneinfo, which the
+recipe provides through its tzdata run dependency.
+---
+ cmake_modules/ThirdpartyToolchain.cmake | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/cmake_modules/ThirdpartyToolchain.cmake b/cmake_modules/ThirdpartyToolchain.cmake
+index 8bf6872..3ddfc8c 100644
+--- a/cmake_modules/ThirdpartyToolchain.cmake
++++ b/cmake_modules/ThirdpartyToolchain.cmake
+@@ -592,7 +592,12 @@ add_library (orc::lz4 ALIAS orc_lz4)
+ # ----------------------------------------------------------------------
+ # IANA - Time Zone Database
+ 
+-if (WIN32)
++# The time zone database downloaded below is only used to set TZDIR for the
++# C++ tests (see c++/test/CMakeLists.txt). Skip it when the tests are not
++# built, so that a regular build does not depend on the third-party Cygwin
++# mirror being reachable. At runtime ORC reads TZDIR or
++# $CONDA_PREFIX/share/zoneinfo (or /usr/share/zoneinfo as a fallback).
++if (WIN32 AND BUILD_CPP_TESTS)
+   SET(CURRENT_TZDATA_FILE "")
+   SET(CURRENT_TZDATA_SHA512 "")
+   File(DOWNLOAD "https://cygwin.osuosl.org/noarch/release/tzdata/tzdata-right/sha512.sum" ${CMAKE_CURRENT_BINARY_DIR}/sha512.sum)
+-- 
+2.43.0
+

@@ -1,4 +1,4 @@
-cmake -S %SRC_DIR% -Bbuild ^
+cmake %CMAKE_ARGS% -S %SRC_DIR% -Bbuild ^
     -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_WINDOWS_EXPORT_ALL_SYMBOLS=ON ^
